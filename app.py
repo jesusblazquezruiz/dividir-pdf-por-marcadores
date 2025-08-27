@@ -36,6 +36,19 @@ st.set_page_config(page_title="Dividir PDF por marcadores", page_icon="📑")
 st.title("📑 Dividir PDF por marcadores")
 st.caption("Sube un PDF con marcadores y genera archivos por cada marcador del nivel elegido.")
 
+# --- CSS para cambiar el texto del botón del file_uploader a "Subir archivo" ---
+st.markdown(
+    """
+    <style>
+    /* Oculta el texto original del botón y coloca "Subir archivo" */
+    .stFileUploader label div div span { display: none !important; }
+    .stFileUploader label div div::after { content: "Subir archivo"; }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# El label también lo dejamos en español
 uploaded_file = st.file_uploader("Selecciona un PDF", type=["pdf"])
 
 if uploaded_file:
